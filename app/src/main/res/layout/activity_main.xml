@@ -8,11 +8,11 @@
 
     <Button
         android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
         android:layout_marginStart="49dp"
         android:layout_marginBottom="239dp"
-        android:text="Back"
+        android:background="@drawable/rightarrow"
         app:layout_constraintBottom_toTopOf="@+id/webview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnFwd"
@@ -32,12 +32,12 @@
 
     <Button
         android:id="@+id/btnFwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="7dp"
         android:layout_marginBottom="253dp"
-        android:text="Forward"
+        android:background="@drawable/leftarrow"
         app:layout_constraintBottom_toTopOf="@+id/webview"
         app:layout_constraintEnd_toStartOf="@+id/btnBack"
         app:layout_constraintStart_toEndOf="@+id/btnGo"
@@ -46,11 +46,11 @@
 
     <Button
         android:id="@+id/btnGo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="253dp"
-        android:text="Go"
+        android:background="@drawable/go"
         app:layout_constraintBottom_toTopOf="@+id/webview"
         app:layout_constraintEnd_toStartOf="@+id/btnFwd"
         app:layout_constraintStart_toStartOf="parent"

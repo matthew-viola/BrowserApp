@@ -28,6 +28,7 @@ Button forward;
 Button back;
 ArrayList<String> history;
 int index;
+String nextString;
 Handler responseHandler = new Handler(new Handler.Callback() {
     @Override
     public boolean handleMessage(@NonNull Message msg) {
@@ -78,6 +79,7 @@ Handler responseHandler = new Handler(new Handler.Callback() {
             public void onClick(View v) {
                 urlStr = history.get(index-1);
                 index--;
+
            //     history.add(urlStr);
                 Thread t = new Thread() {public void run()
                 {try{
@@ -101,9 +103,9 @@ Handler responseHandler = new Handler(new Handler.Callback() {
         forward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                urlStr = history.get(index + 1);
+                urlStr = "https://google.com";
                 index++;
-                history.add(urlStr);
+             //   history.add(urlStr);
                 Thread t = new Thread() {public void run()
                 {try{
                     URL url = new URL(urlStr);
@@ -137,7 +139,7 @@ Handler responseHandler = new Handler(new Handler.Callback() {
             @Override
             public void onPageFinished(WebView view, String url){
                 urlTextBox.setText(url);
-                history.add(urlTextBox.getText().toString());
+                history.add(url);
                 index++;
             }
         });
@@ -148,6 +150,7 @@ Handler responseHandler = new Handler(new Handler.Callback() {
             public void onClick(View v) {
 
                 urlStr = urlTextBox.getText().toString();
+                nextString = urlStr;
                 if(urlTextBox.getText().toString().contains("https://")){
                     Thread t = new Thread() {public void run()
                     {try{
@@ -159,8 +162,8 @@ Handler responseHandler = new Handler(new Handler.Callback() {
                         Message msg = Message.obtain();
                         msg.obj = response;
                         responseHandler.sendMessage(msg);
-                        history.add(urlStr);
-                        index++;
+              //          history.add(urlStr);
+              //          index++;
                     } catch (Exception e) {}
                     }
                     };
@@ -184,8 +187,8 @@ Handler responseHandler = new Handler(new Handler.Callback() {
                     };
                     t.start();
                     urlTextBox.setText(urlStr);
-                    history.add(urlStr);
-                    index++;
+             //       history.add(urlStr);
+             //       index++;
                 }
             }
         });
