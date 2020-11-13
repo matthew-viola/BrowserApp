@@ -3,6 +3,9 @@ package edu.temple.webview;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,7 +22,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BrowserActivity extends AppCompatActivity {
+public abstract class BrowserActivity extends AppCompatActivity implements browserfrag.OnFragmentInteractionListener{
 WebView wv;
 String urlStr;
 EditText urlTextBox;
@@ -29,7 +32,9 @@ Button back;
 ArrayList<String> history;
 int index;
 String nextString;
-Handler responseHandler = new Handler(new Handler.Callback() {
+    ViewPager pager;
+    FragmentStatePagerAdapter adapter;
+    Handler responseHandler = new Handler(new Handler.Callback() {
     @Override
     public boolean handleMessage(@NonNull Message msg) {
 
@@ -39,7 +44,12 @@ Handler responseHandler = new Handler(new Handler.Callback() {
     }
 
 });
-
+    String[] toVisit={
+            "http://www.jdepths.com",
+            "http://www.google.com",
+            "http://www.reddit.com/.compact",
+            "http://www.dribbble.com",
+    };
     @Override
     protected void onSaveInstanceState(Bundle outState )
     {
@@ -62,8 +72,30 @@ Handler responseHandler = new Handler(new Handler.Callback() {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        pager=(ViewPager)findViewById(R.id.mypager);
+        adapter=new FragmentStatePagerAdapter(
+                getSupportFragmentManager()
+        ){
 
-        index = -1;
+            @Override
+            public int getCount() {
+                return toVisit.length;
+            }
+
+            @Override
+            public Fragment getItem(int position) {
+                return browserfrag.newInstance(toVisit[position]);
+            }
+        };
+
+        pager.setAdapter(adapter);
+
+
+
+
+
+
+    index = -1;
         history = new ArrayList<String>();
         back = findViewById(R.id.btnBack);
         forward = findViewById(R.id.btnFwd);
@@ -195,4 +227,6 @@ Handler responseHandler = new Handler(new Handler.Callback() {
 
 
     }
+
+
 }

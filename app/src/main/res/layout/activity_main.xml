@@ -11,24 +11,16 @@
         android:layout_width="75dp"
         android:layout_height="50dp"
         android:layout_marginStart="49dp"
-        android:layout_marginBottom="239dp"
         android:background="@drawable/rightarrow"
-        app:layout_constraintBottom_toTopOf="@+id/webview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnFwd"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <WebView
-        android:id="@+id/webview"
-        android:layout_width="0dp"
-        android:layout_height="400dp"
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </WebView>
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btnFwd"
@@ -36,26 +28,20 @@
         android:layout_height="50dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="7dp"
-        android:layout_marginBottom="253dp"
         android:background="@drawable/leftarrow"
-        app:layout_constraintBottom_toTopOf="@+id/webview"
         app:layout_constraintEnd_toStartOf="@+id/btnBack"
         app:layout_constraintStart_toEndOf="@+id/btnGo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnGo"
         android:layout_width="75dp"
         android:layout_height="50dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="253dp"
         android:background="@drawable/go"
-        app:layout_constraintBottom_toTopOf="@+id/webview"
         app:layout_constraintEnd_toStartOf="@+id/btnFwd"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/txtURL"
@@ -64,13 +50,20 @@
         android:layout_marginStart="91dp"
         android:layout_marginTop="350dp"
         android:layout_marginEnd="107dp"
-        android:layout_marginBottom="220dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Enter URL"
-        app:layout_constraintBottom_toTopOf="@+id/webview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnFwd" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/mypager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
